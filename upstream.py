@@ -4,8 +4,8 @@ import os
 # But for now, use the local proxy
 def get_listing_addr():
     listing_addr = os.environ.get('')
-    return "{0}/listing".format(os.getenv('LISTING_URI','http://localhost:10002/listing'))
+    return "{0}/listing".format(os.getenv('LISTING_URI','http://localhost:10002'))
 
 
 def get_product_addr():
-    return "{0}/product".format(os.getenv('PRODUCT_URI', 'http://localhost:10001/product'))
+    return "{0}/product".format(os.getenv('PRODUCT_URI', 'http://localhost:10001'))

@@ -29,3 +29,4 @@ EOF
 
 sudo systemctl daemon-reload
 sudo systemctl enable web_client.service
+sudo systemctl start web_client.service

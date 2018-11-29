@@ -22,6 +22,7 @@ Type=simple
 User=ubuntu
 ExecStart=/usr/local/bin/envconsul -prefix web_client_conf /usr/bin/python3 /home/ubuntu/src/simple-client/client.py
 Restart=always
+SyslogIdentifier=web_client
 
 [Install]
 WantedBy=multi-user.target

@@ -30,3 +30,22 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable web_client.service
 sudo systemctl start web_client.service
+
+echo "Setting up Nginx to listen on 80..."
+
+DEBIAN_FRONTEND=noninteractive sudo apt-get --yes install nginx-light
+sudo rm /etc/nginx/sites-enabled/default
+
+cat <<EOF | sudo tee /etc/nginx/sites-available/web-client
+server {
+    listen 80;
+    location / {
+        proxy_pass         "http://127.0.0.1:8080";
+    }
+}
+EOF
+
+sudo ln -s /etc/nginx/sites-available/web-client /etc/nginx/sites-enabled/web-client
+
+sudo systemctl restart nginx
+

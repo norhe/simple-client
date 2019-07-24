@@ -1,13 +1,16 @@
 #! /bin/bash
 
+# install the web_client service app
+sudo adduser --disabled-password --gecos "" web_client
+
 # install the requirements
-sudo chown -R ubuntu:ubuntu /home/ubuntu/
+sudo chown -R web_client:web_client /home/web_client/
 pip3 install flask
 pip3 install pymongo
 
 # download the apply
-mkdir /home/ubuntu/src
-cd /home/ubuntu/src
+mkdir /home/web_client/src
+cd /home/web_client/src
 git clone https://github.com/norhe/simple-client.git
 
 # systemd
@@ -19,8 +22,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=ubuntu
-ExecStart=/usr/local/bin/envconsul -prefix web_client_conf /usr/bin/python3 /home/ubuntu/src/simple-client/client.py
+User=web_client
+ExecStart=/usr/local/bin/envconsul -prefix web_client_conf /usr/bin/python3 /home/web_client/src/simple-client/client.py
 Restart=always
 SyslogIdentifier=web_client
 

@@ -1,28 +1,46 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Simple Client</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    </head>
     <body>
-        <h1>Welcome!</h2>
-            <p>
-                This is a simple client that calls two different APIs independently.  The connections are facilitated and secured by Consul Connect.
-            </p>
-        <h3>Products:</h3>
-        <ul>
-            {% if prod_list %}
-                {% for prod in prod_list %}
-                    <li>{{ prod }}</li>
-                {% endfor %}
-            {% else %}
-                <font color="red">There was an error calling Product API...</font>
-            {% endif %} 
-        </ul>
-        <h3>Listings:</h3>
-        <ul>
-            {% if listings_list %}
-                {% for listing in listings_list %}
-                    <li> {{ listing }}</li>
-                {% endfor %}
-            {% else %}
-                <font color="red">There was a problem calling the Listing API...</font>
-            {% endif %}
-        </ul>
+        <section class="section">
+            <section class="hero">
+                <div class="hero-body">
+                    <div class="container">
+                    <h1 class="title">Welcome to {{ hostname }}!</h1>
+                    <h2 class="subtitle">Multi-DC/Multi-Cloud Demonstration</h2>
+               </div>
+            </div>
+        </section>
+        <p>This is a simple client that calls two different APIs independently.  The connections are routed and secured by Consul Connect.</p>
+        <section class="section">
+            <h3 class="title">Products:</h3>
+                <ul>
+                    {% if prod_list %}
+                        {% for prod in prod_list %}
+                            <li>{{ prod }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <font color="red">There was an error calling Product API...</font>
+                    {% endif %} 
+                </ul>
+        </section>
+        <section class="section">
+            <h3 class="title">Listings:</h3>
+                <ul>
+                    {% if listings_list %}
+                        {% for listing in listings_list %}
+                            <li> {{ listing }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <font color="red">There was a problem calling the Listing API...</font>
+                    {% endif %}
+                </ul>
+        </section>
     </body>
 </html>

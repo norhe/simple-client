@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 import requests
 import upstream
+import socket
 
 app = Flask(__name__)
 
@@ -31,7 +32,7 @@ def healthz():
 def index():
     products = get_products()
     listings = get_listings()
-    return render_template('index.html', prod_list=products, listings_list=listings)
+    return render_template('index.html', prod_list=products, listings_list=listings, hostname=socket.getfqdn())
 
 if __name__ == '__main__':
       app.run(host='0.0.0.0', port=8080)

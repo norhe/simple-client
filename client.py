@@ -32,7 +32,7 @@ def healthz():
 def index():
     products = get_products()
     listings = get_listings()
-    return render_template('index.html', prod_list=products, listings_list=listings, hostname=socket.getfqdn())
+    return render_template('index.html', prod_list=products, listings_list=listings, hostname=socket.gethostname())
 
 if __name__ == '__main__':
       app.run(host='0.0.0.0', port=8080)
